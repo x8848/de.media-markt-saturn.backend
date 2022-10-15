@@ -17,13 +17,8 @@ type Item {
   name: String!
 }
 
-type Order {
-  _id: ID!
+type OrderHistory {
   status: OrderStatus!
-  customer: Customer!
-  employee: Employee
-  items: [Item!]!
-  createdAt: DateTime!
   updatedAt: DateTime!
 }
 
@@ -38,7 +33,22 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Order {
+  _id: ID!
+  status: OrderStatus!
+  customer: Customer!
+  employee: Employee
+  items: [Item!]!
+  history: [OrderHistory!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
 type Query {
   order(id: String!): Order!
   orders: [Order!]!
+}
+
+type Mutation {
+  updateOrderStatus(id: String!, status: String!): Order!
 }

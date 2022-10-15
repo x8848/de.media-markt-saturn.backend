@@ -1,4 +1,5 @@
-import { Args, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { OrderStatus } from 'src/utils/enums';
 import { Order } from './order.schema';
 import { OrderService } from './order.service';
 
@@ -14,5 +15,13 @@ export class OrderResolver {
   @Query((returns) => [Order])
   async orders() {
     return this.ordersService.findAll();
+  }
+
+  @Mutation((returns) => Order)
+  async updateOrderStatus(
+    @Args('id') id: string,
+    @Args('status') status: OrderStatus,
+  ) {
+    return this.ordersService.updateStatus(id, status);
   }
 }
