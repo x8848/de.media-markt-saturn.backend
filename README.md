@@ -14,6 +14,12 @@ Install & Run MondoDB
 
 https://www.mongodb.com/docs/manual/administration/install-community/
 
+## Database seeding
+
+```bash
+$ yarn db:seed
+```
+
 ## Running the app
 
 ```bash
@@ -25,17 +31,4 @@ $ yarn start:dev
 
 # production mode
 $ yarn start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ yarn test
-
-# e2e tests
-$ yarn test:e2e
-
-# test coverage
-$ yarn test:cov
 ```

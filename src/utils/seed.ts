@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
-import { CustomerSchema } from 'src/schemas/customer.schema';
-import { EmployeeSchema } from 'src/schemas/employee.schema';
-import { ItemSchema } from 'src/schemas/item.schema';
-import { OrderSchema } from 'src/schemas/order.schema';
+import { CustomerSchema } from 'src/customer/customer.schema';
+import { EmployeeSchema } from 'src/employee/employee.schema';
+import { ItemSchema } from 'src/item/item.schema';
+import { OrderSchema } from 'src/order/order.schema';
 import { MONGODB_URL } from './constants';
 import { OrderStatus } from './enums';
 
@@ -19,17 +19,31 @@ const seed = async () => {
   await Item.deleteMany({});
   await Order.deleteMany({});
 
-  await Employee.create({ name: 'Employee1' });
-  await Employee.create({ name: 'Employee2' });
-
   const customer = await Customer.create({ name: 'Customer' });
-  const item1 = await Item.create({ name: 'Item1', price: 100 });
-  const item2 = await Item.create({ name: 'Item2', price: 200 });
+  const employee = await Employee.create({ name: 'Employee' });
+  const item1 = await Item.create({ name: 'Item1' });
+  const item2 = await Item.create({ name: 'Item2' });
+  const item3 = await Item.create({ name: 'Item3' });
 
   await Order.create({
-    status: OrderStatus.Open,
+    status: OrderStatus.OPEN,
     customer: customer,
-    items: [item1, item2],
+    employee: undefined,
+    items: [item1],
+  });
+
+  await Order.create({
+    status: OrderStatus.IN_PROGRESS,
+    customer: customer,
+    employee: employee,
+    items: [item2],
+  });
+
+  await Order.create({
+    status: OrderStatus.COMPLETE,
+    customer: customer,
+    employee: employee,
+    items: [item3],
   });
 
   await mongoose.connection.close();

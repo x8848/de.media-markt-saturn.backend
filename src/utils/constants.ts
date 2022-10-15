@@ -1,1 +1,2 @@
-export const MONGODB_URL = 'mongodb://localhost/nest'; // NOTE: hardcoded for local server test purpose
+export const MONGODB_URL =
+  process.env.MONGODB_URL || 'mongodb://localhost/nest';
