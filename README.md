@@ -1,11 +1,11 @@
 ## Description
 
-Nest GraphQL API
+Nest MondoDB Apollo GraphQL API
 
 ## Installation
 
 ```bash
-$ yarn install
+$ yarn
 ```
 
 ## Database setup
@@ -24,11 +24,12 @@ $ yarn db:seed
 
 ```bash
 # development
-$ yarn start
+$ yarn dev
 
-# watch mode
-$ yarn start:dev
+# debug mode
+$ yarn debug
 
 # production mode
-$ yarn start:prod
+$ yarn build
+$ yarn start
 ```
