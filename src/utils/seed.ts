@@ -19,10 +19,11 @@ const orderHistoryModel = mongoose.model(OrderHistory.name, OrderHistorySchema);
 const seed = async () => {
   await mongoose.connect(MONGODB_URL);
 
-  await customerModel.deleteMany({});
-  await employeeModel.deleteMany({});
-  await itemModel.deleteMany({});
-  await orderModel.deleteMany({});
+  await customerModel.deleteMany();
+  await employeeModel.deleteMany();
+  await itemModel.deleteMany();
+  await orderModel.deleteMany();
+  await orderHistoryModel.deleteMany();
 
   const customer = await customerModel.create({ name: 'customer' });
   const employee = await employeeModel.create({ name: 'employee' });
