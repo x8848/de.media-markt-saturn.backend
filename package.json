@@ -18,7 +18,9 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "db:seed": "npx ts-node -r tsconfig-paths/register src/utils/seed.ts"
+    "db:seed": "npx ts-node -r tsconfig-paths/register src/utils/seed.ts",
+    "db:start": "brew services start mongodb-community@6.0",
+    "db:stop": "brew services stop mongodb-community@6.0"
   },
   "dependencies": {
     "@nestjs/apollo": "^10.1.3",

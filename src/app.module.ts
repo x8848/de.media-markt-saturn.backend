@@ -20,7 +20,6 @@ import { MONGODB_URL } from './utils/constants';
       autoSchemaFile: 'schema.gql',
       debug: false,
       playground: true,
-      // resolvers: { JSON: GraphQLJSON },
     }),
   ],
 })
